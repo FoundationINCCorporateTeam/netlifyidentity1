@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A static website</title>
+
+  <!-- include the widget -->
+  <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- Add a menu:
+   Log in / Sign up - when the user is not logged in
+   Username / Log out - when the user is logged in
+  -->
+  <div data-netlify-identity-menu></div>
+
+  <!-- Add a simpler button:
+    Simple button that will open the modal.
+  -->
+  <div data-netlify-identity-button>Login with Netlify Identity</div>
+
+  <!-- Conditional rendering based on authentication status -->
+  <script>
+    // Function to handle visibility based on authentication status
+    function handleAuthentication() {
+      const netlifyIdentity = window.netlifyIdentity;
+      
+      // Check if user is logged in
+      if (netlifyIdentity && netlifyIdentity.currentUser()) {
+        // User is logged in, show elements for authenticated users
+        document.querySelectorAll('.authenticated').forEach(function(element) {
+          element.style.display = 'block';
+        });
+        // Hide elements for non-authenticated users
+        document.querySelectorAll('.not-authenticated').forEach(function(element) {
+          element.style.display = 'none';
+        });
+      } else {
+        // User is not logged in, show elements for non-authenticated users
+        document.querySelectorAll('.authenticated').forEach(function(element) {
+          element.style.display = 'none';
+        });
+        // Hide elements for authenticated users
+        document.querySelectorAll('.not-authenticated').forEach(function(element) {
+          element.style.display = 'block';
+        });
+      }
+    }
+
+    // Call handleAuthentication on initial load
+    handleAuthentication();
+
+    // Subscribe to authentication events
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', handleAuthentication);
+      window.netlifyIdentity.on('login', handleAuthentication);
+      window.netlifyIdentity.on('logout', handleAuthentication);
+    }
+  </script>
+
+  <!-- Elements to show only for authenticated users -->
+  <div class="authenticated" style="display: none;">
+    <!-- Add elements here that you want to show only when the user is logged in -->
+    <p>Welcome, <span data-netlify-identity-user></span>!</p>
+    <button data-netlify-identity-menu="logout">Logout</button>
+  </div>
+
+  <!-- Elements to show only for non-authenticated users -->
+  <div class="not-authenticated" style="display: none;">
+    <!-- Add elements here that you want to show only when the user is not logged in -->
+    <p>Please log in to access exclusive content.</p>
+  </div>
+</body>
+</html>
