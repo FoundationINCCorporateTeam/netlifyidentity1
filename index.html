@@ -67,12 +67,31 @@
     .footer-text {
       font-size: 16px;
     }
+
+    /* Styling for the futuristic buttons */
+    .futuristic-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #FF5733;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .futuristic-button:hover {
+      background-color: #FF8C66;
+    }
   </style>
 </head>
 <body>
-  <!-- Netlify Identity menu and button -->
+  <!-- Netlify Identity menu and buttons -->
   <div data-netlify-identity-menu></div>
-  <div data-netlify-identity-button>Login with Netlify Identity</div>
+  <button class="futuristic-button" data-netlify-identity-button>Sign up</button>
+  <button class="futuristic-button" data-netlify-identity-button>Login</button>
 
   <header>
     <div class="container">
