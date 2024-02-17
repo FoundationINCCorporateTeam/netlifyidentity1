@@ -81,23 +81,18 @@
       outline: none;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin: 10px;
+      margin: 5px;
     }
     .futuristic-button:hover {
       background-color: #FF8C66;
-    }
-
-    /* Styling for button icons */
-    .button-icon {
-      margin-right: 10px;
     }
   </style>
 </head>
 <body>
   <!-- Netlify Identity menu and buttons -->
   <div data-netlify-identity-menu></div>
-  <button class="futuristic-button" data-netlify-identity-button><span class="button-icon">🔑</span> Login</button>
-  <button class="futuristic-button" data-netlify-identity-button><span class="button-icon">🚀</span> Sign up</button>
+  <button class="futuristic-button" data-netlify-identity-button="signup">Sign up</button>
+  <button class="futuristic-button" data-netlify-identity-button>Login</button>
 
   <header>
     <div class="container">
